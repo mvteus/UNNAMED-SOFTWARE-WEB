@@ -5,6 +5,15 @@ public class Empresa {
 	private String nome;
 	private String email;
 	private String endereco;
+	private String logo;
+
+	public String getLogo() {
+		return logo;
+	}
+
+	public void setLogo(String logo) {
+		this.logo = logo;
+	}
 
 	public Long getId() {
 		return id;

@@ -11,12 +11,28 @@ import br.com.cidadeonlinesjc.jdbc.ConnectionFactory;
 import br.com.cidadeonlinesjc.model.Empresa;
 
 public class EmpresaDAO {
+	final String INSERT_LOGO_EMPRESAS = "INSERT INTO empresas (logo) values (?)";
 	final String INSERT_EMPRESAS = "INSERT INTO empresas (nome, email, endereco) values (?, ?, ?)";
 	final String SELECT_EMPRESAS = "SELECT * FROM empresas";
 	private Connection con;
 
 	public EmpresaDAO() {
 		this.con = new ConnectionFactory().getConnection();
+	}
+
+	public void adicionaLogoEmpresa(String logo) {
+		PreparedStatement stmt;
+
+		try {
+			stmt = con.prepareStatement(INSERT_LOGO_EMPRESAS);
+
+			stmt.setString(1, logo);
+
+			stmt.execute();
+			stmt.close();
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 	public void adicionaEmpresa(Empresa empresa) {
@@ -51,6 +67,7 @@ public class EmpresaDAO {
 				empresa.setNome(rs.getString("nome"));
 				empresa.setEmail(rs.getString("email"));
 				empresa.setEndereco(rs.getString("endereco"));
+				empresa.setLogo(rs.getString("logo"));
 
 				// Adicionando objeto na lista.
 				empresas.add(empresa);

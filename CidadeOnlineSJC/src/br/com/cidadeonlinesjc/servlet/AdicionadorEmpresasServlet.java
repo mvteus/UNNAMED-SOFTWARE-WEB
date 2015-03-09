@@ -21,7 +21,7 @@ public class AdicionadorEmpresasServlet extends HttpServlet {
 	}
 
 	@Override
-	protected void doPost(HttpServletRequest request,
+	protected void service(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
 		String nome = request.getParameter("nome");
@@ -37,7 +37,7 @@ public class AdicionadorEmpresasServlet extends HttpServlet {
 		dao.adicionaEmpresa(empresa);
 
 		RequestDispatcher rd = request
-				.getRequestDispatcher("empresa-adicionado.jsp");
+				.getRequestDispatcher("views/empresa-adicionado.jsp");
 		rd.forward(request, response);
 	}
 }
