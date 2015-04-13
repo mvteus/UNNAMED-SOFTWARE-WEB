@@ -1,11 +1,30 @@
 package br.com.cidadeonlinesjc.model;
 
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
+
+import org.primefaces.model.UploadedFile;
+
+import br.com.cidadeonlinesjc.dao.EmpresaDAO;
+
+@ManagedBean(name = "EmpresaBean")
 public class Empresa {
 	private Long id;
+	private String cnpj;
 	private String nome;
 	private String email;
-	private String endereco;
 	private String logo;
+	private int Usuario_idUsuario;
+	private UploadedFile file;
+
+	public UploadedFile getFile() {
+		return file;
+	}
+
+	public void setFile(UploadedFile file) {
+		this.file = file;
+	}
 
 	public String getLogo() {
 		return logo;
@@ -39,11 +58,42 @@ public class Empresa {
 		this.email = email;
 	}
 
-	public String getEndereco() {
-		return endereco;
+	public String getCnpj() {
+		return cnpj;
 	}
 
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
+	public void setCnpj(String cnpj) {
+		this.cnpj = cnpj;
+	}
+
+	public int getUsuario_idUsuario() {
+		return Usuario_idUsuario;
+	}
+
+	public void setUsuario_idUsuario(int usuario_idUsuario) {
+		Usuario_idUsuario = usuario_idUsuario;
+	}
+
+	public void adicionaEmpresa() {
+		EmpresaDAO dao = new EmpresaDAO();
+		dao.adicionaEmpresa(this);
+	}
+
+	public void alteraEmpresa() {
+		EmpresaDAO dao = new EmpresaDAO();
+		dao.alteraEmpresa(this);
+	}
+
+	public void excluiEmpresa() {
+		EmpresaDAO dao = new EmpresaDAO();
+		dao.excluiEmpresa(this);
+	}
+
+	public void subirLogo() {
+		if (file != null) {
+			FacesMessage message = new FacesMessage("Sucesso",
+					file.getFileName() + " foi subido.");
+			FacesContext.getCurrentInstance().addMessage(null, message);
+		}
 	}
 }

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Cidade Online - São José dos Campos</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet"
+		href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script
+		src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+</h:head>
+<h:body>
+	<header>
+	<div class="container-fluid">
+		<a class="btn btn-default" href="../../administrativa.jsp"><span
+			class="glyphicon glyphicon-home"></span></a>
+	</div>
+	<div class="container-fluid">
+		<h2 class="text-primary text-center">Empresas</h2>
+	</div>
+	</header>
+	<div class="container-fluid">
+		<div class="jumbotron">
+			<p:dataTable var="empresa" value="#{EmpresaDAO.lista}"
+				paginator="true" rows="5">
+				<p:column sortBy="#{empresa.id}" headerText="ID">
+					<h:outputText value="#{empresa.id}" />
+				</p:column>
+				<p:column sortBy="#{empresa.cnpj}" headerText="CNPJ">
+					<h:outputText value="#{empresa.cnpj}" />
+				</p:column>
+				<p:column sortBy="#{empresa.nome}" headerText="Nome">
+					<h:outputText value="#{empresa.nome}" />
+				</p:column>
+				<p:column sortBy="#{empresa.email}" headerText="E-mail">
+					<h:outputText value="#{empresa.email}" />
+				</p:column>
+				<p:column sortBy="#{empresa.logo}" headerText="Logo">
+					<h:graphicImage value="#{empresa.logo}" />
+				</p:column>
+				<p:column sortBy="#{empresa.Usuario_idUsuario}" headerText="Usuário">
+					<h:outputText value="#{empresa.Usuario_idUsuario}" />
+				</p:column>
+				<p:column headerText="Ações">
+					<p:commandButton class="btn-success" value="Alterar"
+						action="#{EmpresaBean.alteraEmpresa}" />
+					<p:commandButton class="btn-danger" value="Excluir"
+						action="#{EmpresaBean.excluiEmpresa}" />
+				</p:column>
+			</p:dataTable>
+		</div>
+	</div>
+	<footer>
+	<div class="container-fluid">
+		<h6 class="text-center">
+			<span class="glyphicon glyphicon-copyright-mark"></span> Copyright.
+			Todos direitos reservados.
+		</h6>
+	</div>
+	</footer>
+</h:body>
+</html>

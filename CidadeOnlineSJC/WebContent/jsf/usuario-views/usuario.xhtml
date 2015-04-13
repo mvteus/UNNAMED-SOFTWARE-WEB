@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="description" content="" />
+	<meta name="author" content="" />
+
+	<title>Administrativo</title>
+
+	<!-- Bootstrap Core CSS -->
+	<link href="../../css/bootstrap.min.css" rel="stylesheet" />
+
+	<!-- Custom CSS -->
+	<link href="../../css/sb-admin.css" rel="stylesheet" />
+
+	<!-- Custom Fonts -->
+	<link href="../../font-awesome/css/font-awesome.min.css"
+		rel="stylesheet" type="text/css" />
+</h:head>
+<h:body>
+	<div id="wrapper">
+
+		<nav class="navbar navbar-default  navbar-fixed-top" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-ex1-collapse">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="index.html">Administrativo</a>
+			</div>
+			<!-- Top Menu Items -->
+			<ul class="nav navbar-right top-nav">
+
+				<li class="dropdown"><a href="#" class="dropdown-toggle"
+					data-toggle="dropdown"><i class="fa fa-user"></i> Mateus <b
+						class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li><a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
+						</li>
+						<li><a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
+						</li>
+						<li class="divider"></li>
+						<li><a href="#"><i class="fa fa-fw fa-power-off"></i> Log
+								Out</a></li>
+					</ul></li>
+			</ul>
+			<div class="collapse navbar-collapse navbar-ex1-collapse">
+				<ul class="nav navbar-nav side-nav">
+
+					<!-- EMPRESA -->
+					<li><a href="javascript:;" data-toggle="collapse"
+						data-target="#empresa"><i class="fa fa-fw fa-edit"></i>
+							Empresa <i class="fa fa-fw fa-caret-down"></i></a>
+						<ul id="empresa" class="collapse">
+							<li><a href="empresa.xhtml"><i class="fa fa-fw fa-edit"></i>
+									Nova Empresa </a></li>
+							<li><a href="listarEmpresas.xhtml"><i
+									class="fa fa-fw fa-edit"></i> Alterar Empresa </a></li>
+						</ul></li>
+
+					<!-- CATEGORIA -->
+					<li><a href="javascript:;" data-toggle="collapse"
+						data-target="#categoria"><i class="fa fa-fw fa-edit"></i>
+							Categoria <i class="fa fa-fw fa-caret-down"></i></a>
+						<ul id="categoria" class="collapse">
+							<li><a href="jsf/categoria-views/categoria.xhtml"><i
+									class="fa fa-fw fa-edit"></i> Nova Categoria </a></li>
+							<li><a href="jsf/categoria-views/listarCategorias.xhtml"><i
+									class="fa fa-fw fa-edit"></i> Alterar Categoria </a></li>
+						</ul></li>
+
+					<!-- LOJA -->
+					<li><a href="javascript:;" data-toggle="collapse"
+						data-target="#loja"><i class="fa fa-fw fa-edit"></i> Loja <i
+							class="fa fa-fw fa-caret-down"></i></a>
+						<ul id="loja" class="collapse">
+							<li><a href="jsf/loja-views/loja.xhtml"><i
+									class="fa fa-fw fa-edit"></i> Nova Loja </a></li>
+							<li><a href="jsf/loja-views/listarLojas.xhtml"><i
+									class="fa fa-fw fa-edit"></i> Alterar Loja </a></li>
+						</ul></li>
+
+					<!-- USUÁRIO -->
+					<li><a href="javascript:;" data-toggle="collapse"
+						data-target="#usuario"><i class="fa fa-fw fa-edit"></i>
+							Usuário <i class="fa fa-fw fa-caret-down"></i></a>
+						<ul id="usuario" class="collapse">
+							<li><a href="usuario.xhtml"><i class="fa fa-fw fa-edit"></i>
+									Novo Usuário </a></li>
+							<li><a href="listarUsuarios.xhtml"><i
+									class="fa fa-fw fa-edit"></i> Alterar Usuário </a></li>
+						</ul></li>
+
+				</ul>
+			</div>
+		</div>
+		<!-- /.navbar-collapse --> </nav>
+
+		<div id="page-wrapper">
+
+			<div class="container-fluid">
+
+				<!-- Page Heading 
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                           Empresa
+                        </h1>
+                        <ol class="breadcrumb">
+                            
+                            <li class="active">
+                                <i class="fa fa-edit"></i> Incluir
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                 -->
+
+
+				<h:form>
+					<p:panelGrid columns="2">
+						<f:facet name="header">
+							Criar Usuário
+							</f:facet>
+
+						<h:outputLabel for="usuario" value="Usuário: " />
+						<p:inputText id="nome" value="#{UsuarioBean.nome}" label="Usuário" />
+
+						<h:outputLabel for="senha" value="Senha: " />
+						<p:password id="senha" value="#{UsuarioBean.senha}" />
+
+						<p:outputLabel for="permissao" value="Administrador: " />
+						<p:selectBooleanCheckbox id="permissao"
+							value="#{UsuarioBean.permissao}" />
+
+						<f:facet name="footer">
+							<p:commandButton class="btn-success" value="Confirmar"
+								icon="ui-icon-check" action="#{UsuarioBean.adicionaUsuario}" />
+							<p:commandButton class="btn-danger" value="Limpar" type="reset" />
+						</f:facet>
+					</p:panelGrid>
+				</h:form>
+				<!-- /.row -->
+
+			</div>
+			<!-- /.container-fluid -->
+
+		</div>
+		<!-- /#page-wrapper -->
+
+	</div>
+	<!-- /#wrapper -->
+
+	<!-- jQuery -->
+	<script src="../../js/jquery.js"></script>
+
+	<!-- Bootstrap Core JavaScript -->
+	<script src="../../js/bootstrap.min.js"></script>
+</h:body>
+</html>

@@ -7,26 +7,47 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.bean.ManagedBean;
+
 import br.com.cidadeonlinesjc.jdbc.ConnectionFactory;
 import br.com.cidadeonlinesjc.model.Empresa;
 
+@ManagedBean(name = "EmpresaDAOBean")
 public class EmpresaDAO {
-	final String INSERT_LOGO_EMPRESAS = "INSERT INTO empresas (logo) values (?)";
-	final String INSERT_EMPRESAS = "INSERT INTO empresas (nome, email, endereco) values (?, ?, ?)";
-	final String SELECT_EMPRESAS = "SELECT * FROM empresas";
+	private final String INSERT_EMPRESAS = "INSERT INTO empresa (cnpj, nome, email, logo) values (?, ?, ?, ?)";
+	private final String SELECT_EMPRESAS = "SELECT * FROM empresa";
+	private final String DELETE_EMPRESAS = "DELETE FROM empresa WHERE cnpj = (?)";
+	private final String UPDATE_EMPRESAS = "UPDATE empresa SET cnpj=?, nome=?, email=?, logo=? WHERE id=? ";
 	private Connection con;
 
 	public EmpresaDAO() {
 		this.con = new ConnectionFactory().getConnection();
 	}
 
-	public void adicionaLogoEmpresa(String logo) {
+	public void alteraEmpresa(Empresa empresa) {
 		PreparedStatement stmt;
 
 		try {
-			stmt = con.prepareStatement(INSERT_LOGO_EMPRESAS);
+			stmt = con.prepareStatement(UPDATE_EMPRESAS);
+			stmt.setString(1, empresa.getCnpj());
+			stmt.setString(2, empresa.getNome());
+			stmt.setString(3, empresa.getEmail());
+			stmt.setString(4, empresa.getLogo());
+			stmt.setLong(5, empresa.getId());
 
-			stmt.setString(1, logo);
+			stmt.execute();
+			stmt.close();
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	public void excluiEmpresa(Empresa empresa) {
+		PreparedStatement stmt;
+
+		try {
+			stmt = con.prepareStatement(DELETE_EMPRESAS);
+			stmt.setString(1, empresa.getCnpj());
 
 			stmt.execute();
 			stmt.close();
@@ -41,9 +62,10 @@ public class EmpresaDAO {
 		try {
 			stmt = con.prepareStatement(INSERT_EMPRESAS);
 
-			stmt.setString(1, empresa.getNome());
-			stmt.setString(2, empresa.getEmail());
-			stmt.setString(3, empresa.getEndereco());
+			stmt.setString(1, empresa.getCnpj());
+			stmt.setString(2, empresa.getNome());
+			stmt.setString(3, empresa.getEmail());
+			stmt.setString(4, empresa.getLogo());
 
 			stmt.execute();
 			stmt.close();
@@ -64,9 +86,9 @@ public class EmpresaDAO {
 				// Criando objeto Empresa.
 				Empresa empresa = new Empresa();
 				empresa.setId(rs.getLong("id"));
+				empresa.setCnpj(rs.getString("cnpj"));
 				empresa.setNome(rs.getString("nome"));
 				empresa.setEmail(rs.getString("email"));
-				empresa.setEndereco(rs.getString("endereco"));
 				empresa.setLogo(rs.getString("logo"));
 
 				// Adicionando objeto na lista.
