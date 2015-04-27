@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1">
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -13,18 +12,14 @@
 
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/stylish-portfolio.css" rel="stylesheet">
-<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet"
-	type="text/css">
-<link
-	href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic"
-	rel="stylesheet" type="text/css">
-
+<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
 <script src="js/jquery.js" type="text/javascript"></script>
 <script src="js/bootstrap.min.js" type="text/javascript"></script>
+
+
 </head>
 <body>
-
     
     <div id="wrapper">    
     <nav class="navbar navbar-default  navbar-fixed-top ">
@@ -48,9 +43,6 @@
                     </li>
                     <li class="page-scroll">
                         <a href="#">Sobre</a>
-                    </li>
-                    <li class="page-scroll">
-                        <a href="#portfolio">Portfolio</a>
                     </li>
                     <li class="page-scroll">
                         <a href="administrativa.jsp">Acesso Restrito</a>
@@ -83,109 +75,28 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2>Achar o que voce procura nunca foi tão facil.</h2>
-                    
-            </div>
-            <!-- /.row -->
-        </div>
-        <!-- /.container -->
-    </section>
-
-    <!-- Services -->
-    <!-- The circle icons use Font Awesome's stacked icon classes. For more information, visit http://fontawesome.io/examples/ -->
-    <section id="services" class="services bg-primary">
-        <div class="container">
-            <div class="row text-center">
-                <div class="col-lg-10 col-lg-offset-1">
-                    
-                    <form class="navbar-form" role="search">
+                     <form class="navbar-form" role="search">
 		<div class="input-group">
-			<input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
+			<input type="text" class="form-control " placeholder="Search" style="width: 700px" name="srch-term" id="srch-term">
 			<div class="input-group-btn">
 				<button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
 			</div>
 		</div>
 		</form>
                     
-                    <div class="row">
-                        <div class="col-md-3 col-sm-6">
-                            <div class="service-item">
-                                <span class="fa-stack fa-4x">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-cloud fa-stack-1x text-primary"></i>
-                            </span>
-                                <h4>
-                                    <strong>Empresa 1</strong>
-                                </h4>
-                                <p>Descrição</p>
-                                <a href="#" class="btn btn-light">Site</a>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6">
-                            <div class="service-item">
-                                <span class="fa-stack fa-4x">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-compass fa-stack-1x text-primary"></i>
-                            </span>
-                                <h4>
-                                    <strong>Empresa 2</strong>
-                                </h4>
-                                <p>Descrição</p>
-                                <a href="#" class="btn btn-light">Site</a>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6">
-                            <div class="service-item">
-                                <span class="fa-stack fa-4x">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-flask fa-stack-1x text-primary"></i>
-                            </span>
-                                <h4>
-                                    <strong>Empresa 3</strong>
-                                </h4>
-                                <p>Descrição</p>
-                                <a href="#" class="btn btn-light">Site</a>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6">
-                            <div class="service-item">
-                                <span class="fa-stack fa-4x">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-shield fa-stack-1x text-primary"></i>
-                            </span>
-                                <h4>
-                                    <strong>Empresa 4</strong>
-                                </h4>
-                                <p>Descrição</p>
-                                <a href="#" class="btn btn-light">Site</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.row (nested) -->
-                </div>
-                <!-- /.col-lg-10 -->
             </div>
             <!-- /.row -->
         </div>
         <!-- /.container -->
     </section>
-
-    <!-- Callout -->
     
-
-    <!-- Call to Action -->
-    
-
     <!-- Map -->
-    <section id="contact" class="map">
-        
-        <iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;aq=0&amp;oq=twitter&amp;sll=28.659344,-81.187888&amp;sspn=0.128789,0.264187&amp;ie=UTF8&amp;hq=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;t=m&amp;z=15&amp;iwloc=A&amp;output=embed"></iframe>
-        <br />
-        <small>
-            <a href="https://www.google.com.br/maps/place/Shopping+Centro/@-23.1856667,-45.886523,16z/data=!4m5!1m2!2m1!1sshopping+perto+de+Pra%C3%A7a+Afonso+Pena,+Centro,+S%C3%A3o+Jos%C3%A9+dos+Campos+-+S%C3%A3o+Paulo!3m1!1s0x0000000000000000:0x2fa4f36ff1cd5aad"></a>
-        </small>
-        </iframe>
-    </section>
-
+    <section>
+        <div id="mapa" style="height: 600px; width: 100%"></div>
+        <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAjYG9u1yoUnaw2CYn905mHU8jaOUYY91A&amp;sensor=false"></script>
+		<script src="js/mapa.js"></script>
+	</section>
+                    
     <!-- Footer -->
     <footer>
         <div class="container">
