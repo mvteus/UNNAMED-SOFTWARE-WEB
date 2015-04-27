@@ -1,14 +1,17 @@
 package br.com.cidadeonlinesjc.model;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 
 import br.com.cidadeonlinesjc.dao.CategoriaDAO;
 
 @ManagedBean(name = "CategoriaBean")
+@ViewScoped
 public class Categoria {
 	private int id;
 	private String descricao;
 	private int idSelecionado;
+	private Categoria categoria;
 
 	public int getIdSelecionado() {
 		return idSelecionado;
@@ -41,11 +44,19 @@ public class Categoria {
 
 	public void alteraCategoria() {
 		CategoriaDAO dao = new CategoriaDAO();
-		dao.alteraCategoria(this);
+		dao.alteraCategoria(this.categoria);
 	}
 
 	public void excluiCategoria() {
 		CategoriaDAO dao = new CategoriaDAO();
-		dao.excluiCategoria(this);
+		dao.excluiCategoria(this.categoria);
+	}
+
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
 	}
 }

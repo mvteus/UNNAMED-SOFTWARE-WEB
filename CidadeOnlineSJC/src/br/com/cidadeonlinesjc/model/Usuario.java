@@ -1,10 +1,12 @@
 package br.com.cidadeonlinesjc.model;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 
 import br.com.cidadeonlinesjc.dao.UsuarioDAO;
 
 @ManagedBean(name = "UsuarioBean")
+@ViewScoped
 public class Usuario {
 	private int id;
 	private String senha;

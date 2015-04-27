@@ -1,16 +1,27 @@
 package br.com.cidadeonlinesjc.model;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 
 import br.com.cidadeonlinesjc.dao.LojaDAO;
 
 @ManagedBean(name = "LojaBean")
+@ViewScoped
 public class Loja {
 	private int id;
 	private String endereco;
 	private String complemento;
 	private String bairro;
 	private int idEmpresa;
+	private Loja loja;
+
+	public Loja getLoja() {
+		return loja;
+	}
+
+	public void setLoja(Loja loja) {
+		this.loja = loja;
+	}
 
 	public String getComplemento() {
 		return complemento;

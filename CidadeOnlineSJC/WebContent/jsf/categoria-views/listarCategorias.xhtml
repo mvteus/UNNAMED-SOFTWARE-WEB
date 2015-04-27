@@ -10,10 +10,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link rel="stylesheet"
 		href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
-	<script
+	<!-- <script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script
-		src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+		src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
+	<h:outputScript name="jquery/jquery-plugins.js" library="primefaces" />
 </h:head>
 <h:body>
 	<header>
@@ -27,31 +28,75 @@
 	</header>
 	<div class="container-fluid">
 		<div class="jumbotron">
-			<p:dataTable var="categoria"
-				value="#{CategoriaDAOBean.listaCategoria}" paginator="true" rows="5">
-				<p:column sortBy="#{categoria.id}" headerText="ID">
-					<h:outputText value="#{categoria.id}" />
-				</p:column>
-				<p:column sortBy="#{categoria.descricao}" headerText="Categoria">
-					<h:outputText value="#{categoria.descricao}" />
-				</p:column>
+			<h:form id="formGrid">
+				<p:dataTable id="grid" var="categoria"
+					value="#{CategoriaDAOBean.listaCategoria}" paginator="true"
+					rows="5">
+					<p:column sortBy="#{categoria.id}" headerText="ID">
+						<h:outputText value="#{categoria.id}" />
+					</p:column>
+					<p:column sortBy="#{categoria.descricao}" headerText="Categoria">
+						<h:outputText value="#{categoria.descricao}" />
+					</p:column>
 
-				<!-- AÇÕES ALTERAR/EXCLUIR -->
-				<p:column headerText="Ações">
-					<h:form>
-						<p:commandButton class="btn-success" value="Alterar"
-							action="#{CategoriaBean.alteraCategoria}" ajax="false">
-							<f:setPropertyActionListener value="#{categoria.id}"
-								target="#{categoria.idSelecionado}"></f:setPropertyActionListener>
+					<!-- AÇÕES ALTERAR/EXCLUIR -->
+					<p:column headerText="Alterar">
+
+						<p:commandButton icon="ui-icon-pencil" title="Alterar"
+							update=":categoriaForm:dialogEditar"
+							oncomplete="PF('editar').show();" immediate="true">
+							<f:setPropertyActionListener value="#{categoria}"
+								target="#{CategoriaBean.categoria}"></f:setPropertyActionListener>
 						</p:commandButton>
-						<p:commandButton class="btn-danger" value="Excluir"
-							action="#{CategoriaBean.excluiCategoria}" ajax="false">
-							<f:setPropertyActionListener value="#{categoria.id}"
-								target="#{categoria.idSelecionado}"></f:setPropertyActionListener>
+					</p:column>
+
+					<p:column headerText="Excluir">
+						<p:commandButton icon="ui-icon-circle-close" title="Excluir"
+							action="#{CategoriaBean.excluiCategoria}" ajax="false"
+							update=":formGrid">
+							<f:setPropertyActionListener value="#{categoria}"
+								target="#{CategoriaBean.categoria}"></f:setPropertyActionListener>
 						</p:commandButton>
-					</h:form>
-				</p:column>
-			</p:dataTable>
+					</p:column>
+					<!-- FIM AÇÕES ALTERAR/EXCLUIR -->
+
+				</p:dataTable>
+			</h:form>
+
+			<!-- EDITAR CATEGORIA DIALOG -->
+			<h:form id="categoriaForm">
+
+				<p:dialog id="dialogEditar" header="Editando" widgetVar="editar"
+					modal="true" dynamic="false">
+
+					<p:panelGrid columns="2" cellpadding="2">
+
+						<f:facet name="header">Categoria</f:facet>
+
+						<p:outputLabel for="descricao" value="Descrição: " />
+
+						<p:inputText id="descricao" value="#{CategoriaBean.descricao}" />
+
+
+						<f:facet name="footer">
+
+							<p:commandButton value="Atualizar"
+								actionListener="#{CategoriaBean.alteraCategoria}"
+								update=":formGrid:grid" oncomplete="PF('editar').hide()">
+
+							</p:commandButton>
+
+							<p:commandButton value="Limpar" type="reset" />
+
+						</f:facet>
+
+					</p:panelGrid>
+
+				</p:dialog>
+
+			</h:form>
+			<!-- FIM EDITAR CATEGORIA DIALOG -->
+
 		</div>
 	</div>
 	<footer>

@@ -5,7 +5,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Empresa adicionada com sucesso!</title>
+<script src="../js/jquery-2.1.3.js"></script>
+<script src="../js/empresaAdicionada.js"></script>
 </head>
-<body>A empresa ${param.nome} adicionado com sucesso.
+<body>
 </body>
 </html>

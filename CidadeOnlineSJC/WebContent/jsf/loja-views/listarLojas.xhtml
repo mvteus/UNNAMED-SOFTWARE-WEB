@@ -28,26 +28,76 @@
 	<section>
 	<div class="container-fluid">
 		<div class="jumbotron">
-			<p:dataTable var="loja" value="#{LojaDAOBean.listaLoja}"
-				paginator="true" rows="5">
-				<p:column sortBy="#{loja.id}" headerText="ID">
-					<h:outputText value="#{loja.id}" />
-				</p:column>
-				<p:column sortBy="#{loja.endereco}" headerText="Endereço">
-					<h:outputText value="#{loja.endereco}" />
-				</p:column>
-				<p:column sortBy="#{loja.Empresa_idEmpresa}" headerText="Empresa">
-					<h:outputText value="#{loja.Empresa_idEmpresa}" />
-				</p:column>
+			<h:form id="lojaForm">
+				<p:dataTable id="lojaGrid" var="loja"
+					value="#{LojaDAOBean.listaLoja}" paginator="true" rows="5">
+					<p:column sortBy="#{loja.id}" headerText="ID">
+						<h:outputText value="#{loja.id}" />
+					</p:column>
+					<p:column sortBy="#{loja.endereco}" headerText="Endereço">
+						<h:outputText value="#{loja.endereco}" />
+					</p:column>
+					<p:column sortBy="#{loja.Empresa_idEmpresa}" headerText="Empresa">
+						<h:outputText value="#{loja.Empresa_idEmpresa}" />
+					</p:column>
 
-				<!-- AÇÕES ALTERAR/EXCLUIR -->
-				<p:column headerText="Ações">
-					<p:commandButton class="btn-success" value="Alterar"
-						action="#{LojaBean.alteraLoja}" />
-					<p:commandButton class="btn-danger" value="Excluir"
-						action="#{LojaBean.excluiLoja}" />
-				</p:column>
-			</p:dataTable>
+					<!-- AÇÕES ALTERAR/EXCLUIR -->
+					<p:column headerText="Alterar">
+
+						<p:commandButton icon="ui-icon-pencil" title="Alterar"
+							update=":alteraLojaForm:dialogEditar"
+							oncomplete="PF('editar').show();" immediate="true">
+							<f:setPropertyActionListener value="#{categoria}"
+								target="#{CategoriaBean.categoria}"></f:setPropertyActionListener>
+						</p:commandButton>
+					</p:column>
+
+					<p:column headerText="Excluir">
+						<p:commandButton icon="ui-icon-circle-close" title="Excluir"
+							action="#{LojaBean.excluiLoja}" ajax="false"
+							update=":lojaForm:lojaGrid">
+							<f:setPropertyActionListener value="#{loja}"
+								target="#{LojaBean.loja}"></f:setPropertyActionListener>
+						</p:commandButton>
+					</p:column>
+					<!-- FIM AÇÕES ALTERAR/EXCLUIR -->
+
+				</p:dataTable>
+			</h:form>
+
+			<h:form id="alteraLojaForm">
+				<p:dialog id="dialogEditar" header="Editando" widgetVar="editar"
+					modal="true" dynamic="false">
+
+					<p:panelGrid columns="2" cellpadding="3">
+						<!-- ENDEREÇO -->
+						<h:outputLabel for="endereco" value="Endereço: " />
+						<h:inputText id="endereco" value="#{LojaBean.endereco}" />
+
+						<!-- COMPLEMENTO -->
+						<h:outputLabel for="complemento" value="Complemento: " />
+						<h:inputText id="complemento" value="#{LojaBean.complemento}" />
+
+						<!-- BAIRRO -->
+						<h:outputLabel for="bairro" value="Bairro: " />
+						<h:inputText id="bairro" value="#{LojaBean.bairro}" />
+
+						<!-- SELECIONAR EMPRESA -->
+						<p:outputLabel for="empresa" value="Empresas: " />
+						<p:selectOneMenu id="empresa" value="#{EmpresaDAOBean.lista}">
+							<f:selectItems value="#{EmpresaDAOBean.lista}" var="empresa"
+								itemLabel="#{empresa.nome}" itemValue="#{empresa.id}" />
+						</p:selectOneMenu>
+
+
+						<p:commandButton value="Confirmar"
+							action="#{LojaBean.adicionaLoja}" />
+						<p:commandButton value="Limpar" type="reset" />
+
+					</p:panelGrid>
+
+				</p:dialog>
+			</h:form>
 		</div>
 	</div>
 	</section>

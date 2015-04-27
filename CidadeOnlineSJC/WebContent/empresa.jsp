@@ -83,7 +83,7 @@
                                 <a href="empresa.jsp"><i class="fa fa-fw fa-edit"></i> Alterar Empresa </a>
                             </li>
                             <li>
-                                <a href="forms.jsp"><i class="fa fa-fw fa-edit"></i> Deletar Empresa</a>
+                                <a href="listarEmpresas.jsp"><i class="fa fa-fw fa-edit"></i> Deletar Empresa</a>
                             </li>
                         </ul>
                     </li>

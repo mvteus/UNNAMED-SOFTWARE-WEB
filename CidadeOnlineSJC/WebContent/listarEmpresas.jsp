@@ -35,8 +35,13 @@
 					<!-- for -->
 					<c:forEach var="empresa" items="${dao.lista}">
 						<tr>
-							<td><a href="${empresa.logo}" class="thumbnail"></a></td>
+							<td><img src="${empresa.logo}" class="img-circle"
+								alt="Logo Empresa" style="width: 150px; height: 150px"></td>
 							<td>${empresa.nome}</td>
+							<td><a href="#"><span
+									class="glyphicon glyphicon-remove-sign"></span></a></td>
+							<td><a href="#"><span
+									class="glyphicon glyphicon-plus-sign"></span></a></td>
 						</tr>
 					</c:forEach>
 				</table>

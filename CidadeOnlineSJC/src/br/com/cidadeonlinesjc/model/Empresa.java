@@ -2,6 +2,7 @@ package br.com.cidadeonlinesjc.model;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
 import org.primefaces.model.UploadedFile;
@@ -9,6 +10,7 @@ import org.primefaces.model.UploadedFile;
 import br.com.cidadeonlinesjc.dao.EmpresaDAO;
 
 @ManagedBean(name = "EmpresaBean")
+@ViewScoped
 public class Empresa {
 	private Long id;
 	private String cnpj;
@@ -17,6 +19,7 @@ public class Empresa {
 	private String logo;
 	private int Usuario_idUsuario;
 	private UploadedFile file;
+	private Empresa empresa;
 
 	public UploadedFile getFile() {
 		return file;
@@ -95,5 +98,13 @@ public class Empresa {
 					file.getFileName() + " foi subido.");
 			FacesContext.getCurrentInstance().addMessage(null, message);
 		}
+	}
+
+	public Empresa getEmpresa() {
+		return empresa;
+	}
+
+	public void setEmpresa(Empresa empresa) {
+		this.empresa = empresa;
 	}
 }

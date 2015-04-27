@@ -72,9 +72,9 @@
 						data-target="#categoria"><i class="fa fa-fw fa-edit"></i>
 							Categoria <i class="fa fa-fw fa-caret-down"></i></a>
 						<ul id="categoria" class="collapse">
-							<li><a href="jsf/categoria-views/categoria.xhtml"><i
+							<li><a href="../categoria-views/categoria.xhtml"><i
 									class="fa fa-fw fa-edit"></i> Nova Categoria </a></li>
-							<li><a href="jsf/categoria-views/listarCategorias.xhtml"><i
+							<li><a href="../categoria-views/listarCategorias.xhtml"><i
 									class="fa fa-fw fa-edit"></i> Alterar Categoria </a></li>
 						</ul></li>
 
@@ -83,9 +83,9 @@
 						data-target="#loja"><i class="fa fa-fw fa-edit"></i> Loja <i
 							class="fa fa-fw fa-caret-down"></i></a>
 						<ul id="loja" class="collapse">
-							<li><a href="jsf/loja-views/loja.xhtml"><i
+							<li><a href="../loja-views/loja.xhtml"><i
 									class="fa fa-fw fa-edit"></i> Nova Loja </a></li>
-							<li><a href="jsf/loja-views/listarLojas.xhtml"><i
+							<li><a href="../loja-views/listarLojas.xhtml"><i
 									class="fa fa-fw fa-edit"></i> Alterar Loja </a></li>
 						</ul></li>
 
@@ -94,7 +94,9 @@
 						data-target="#usuario"><i class="fa fa-fw fa-edit"></i>
 							Usuário <i class="fa fa-fw fa-caret-down"></i></a>
 						<ul id="usuario" class="collapse">
-							<li><a href="jsf/usuario-views/listarUsuarios.xhtml"><i
+							<li><a href="../usuario-views/usuario.xhtml"><i
+									class="fa fa-fw fa-edit"></i> Novo Usuário </a></li>
+							<li><a href="../usuario-views/listarUsuarios.xhtml"><i
 									class="fa fa-fw fa-edit"></i> Alterar Usuário </a></li>
 						</ul></li>
 
@@ -126,7 +128,7 @@
 				<div class="row">
 					<div class="col-lg-6">
 
-						<h:form enctype="multipart/form-data">
+						<h:form id="empresaForm">
 							<p:panelGrid columns="2">
 								<f:facet name="header">Usuários</f:facet>
 
@@ -155,11 +157,18 @@
 
 
 								<!-- SUBIR LOGO -->
-
 								<h:outputLabel for="logo" value="Logo: " />
-								<p:growl id="messages" showDetail="true" />
-								<p:fileUpload fileUploadListener="#{EmpresaBean.subirLogo}"
-									mode="simple" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
+								<p:commandButton icon="fa fa-home"
+									onclick="PF('upload').show();" title="Logo"></p:commandButton>
+								<h:form id="form" enctype="multipart/form-data">
+									<h:inputFile id="file" value="#{EmpresaBean.subirLogo}" />
+									<h:commandButton value="Upload"
+										action="#{EmpresaBean.subirLogo}">
+										<f:ajax execute="file" render="@all" />
+									</h:commandButton>
+									<h:inputTextarea value="#{EmpresaBean.fileContent}"
+										readonly="true" />
+								</h:form>
 
 								<!-- SELECIONAR LOJA -->
 								<!-- <h:panelGrid columns="2">
@@ -178,7 +187,7 @@
 									value="#{UsuarioDAOBean.listaUsuario}">
 									<f:selectItems value="#{UsuarioDAOBean.listaUsuario}"
 										var="usuario" itemLabel="#{usuario.nome}"
-										itemValue="#{usuario.id}">
+										itemValue="#{usuario}">
 									</f:selectItems>
 								</p:selectOneListbox>
 
@@ -192,6 +201,16 @@
 								</f:facet>
 
 							</p:panelGrid>
+						</h:form>
+
+						<h:form id="uploadForm" enctype="multipart/form-data">
+							<p:dialog id="dialogUpload" header="Uploading..."
+								widgetVar="upload" modal="true" dynamic="false">>
+								<h:outputLabel for="logo" value="Logo: " />
+								<p:growl id="messages" showDetail="true" />
+								<p:fileUpload fileUploadListener="#{EmpresaBean.subirLogo}"
+									mode="simple" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
+							</p:dialog>
 						</h:form>
 					</div>
 
