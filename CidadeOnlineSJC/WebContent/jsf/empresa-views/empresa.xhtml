@@ -5,7 +5,6 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
-	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta name="description" content="" />
@@ -109,27 +108,12 @@
 
 			<div class="container-fluid">
 
-				<!-- Page Heading 
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1 class="page-header">
-                           Empresa
-                        </h1>
-                        <ol class="breadcrumb">
-                            
-                            <li class="active">
-                                <i class="fa fa-edit"></i> Incluir
-                            </li>
-                        </ol>
-                    </div>
-                </div>
-                 -->
-
 				<div class="row">
-					<div class="col-lg-6">
+					<div class="col-lg-12">
 
 						<h:form id="empresaForm">
-							<p:panelGrid columns="2">
+							<p:panelGrid columns="2" cellpadding="2">
+
 								<f:facet name="header">Usuários</f:facet>
 
 								<!-- NOME DA EMPRESA -->
@@ -138,16 +122,11 @@
 
 								<!-- CNPJ -->
 								<h:outputLabel for="cnpj" value="CNPJ: " />
-								<p:inputText id="cnpj" value="#{EmpresaBean.cnpj}"
-									required="true" validatorMessage="CNPJ mal formatado"
-									requiredMessage="Campo obrigatório">
-									<f:validateRegex
-										pattern="^[0-9]{2,3}\.[0-9]{3}\.[0-9]{3}\/[0-9]{4}-[0-9]{2}$" />
-								</p:inputText>
+								<p:inputText id="cnpj" value="#{EmpresaBean.cnpj}" />
 
 								<!-- E-MAIL -->
 								<h:outputLabel for="email" value="Email: " />
-								<p:inputText id="email" value="#{EmpresaBean.email}" size="40"
+								<p:inputText id="email" value="#{EmpresaBean.email}"
 									validatorMessage="Email mal formatado">
 
 									<f:validateRegex
@@ -155,63 +134,38 @@
 
 								</p:inputText>
 
-
 								<!-- SUBIR LOGO -->
-								<h:outputLabel for="logo" value="Logo: " />
-								<p:commandButton icon="fa fa-home"
-									onclick="PF('upload').show();" title="Logo"></p:commandButton>
-								<h:form id="form" enctype="multipart/form-data">
-									<h:inputFile id="file" value="#{EmpresaBean.subirLogo}" />
-									<h:commandButton value="Upload"
-										action="#{EmpresaBean.subirLogo}">
-										<f:ajax execute="file" render="@all" />
-									</h:commandButton>
-									<h:inputTextarea value="#{EmpresaBean.fileContent}"
-										readonly="true" />
-								</h:form>
 
 								<!-- SELECIONAR LOJA -->
-								<!-- <h:panelGrid columns="2">
+
 								<p:outputLabel for="loja" value="Lojas: " />
-								<p:selectOneListbox id="loja" value="#{LojaDAOBean.listaLoja}">
-									<f:selectItems value="#{LojaDAOBean.listaLoja}" var="loja"
+								<p:selectOneMenu id="loja" value="#{LojaBean.listaLojas}">
+									<f:selectItems value="#{LojaBean.listaLojas}" var="loja"
 										itemLabel="#{loja.endereco}" itemValue="#{loja.endereco}" />
-								</p:selectOneListbox>
-							</h:panelGrid> -->
+								</p:selectOneMenu>
+
 
 
 								<!-- SELECIONAR USUÁRIO -->
 
 								<p:outputLabel for="usuario" value="Usuários: " />
-								<p:selectOneListbox id="usuario"
-									value="#{UsuarioDAOBean.listaUsuario}">
-									<f:selectItems value="#{UsuarioDAOBean.listaUsuario}"
+								<p:selectOneMenu id="usuario"
+									value="#{UsuarioBean.listaUsuarios}">
+									<f:selectItems value="#{UsuarioBean.listaUsuarios}"
 										var="usuario" itemLabel="#{usuario.nome}"
 										itemValue="#{usuario}">
 									</f:selectItems>
-								</p:selectOneListbox>
-
+								</p:selectOneMenu>
 
 								<f:facet name="footer">
-									<p:commandButton class="btn-success" value="Subir" ajax="false"
-										actionListener="#{EmpresaBean.subirLogo}" disabled="false" />
-									<p:commandButton class="btn-success" value="Confirmar"
+									<p:commandButton value="Confirmar"
 										action="#{EmpresaBean.adicionaEmpresa}" />
-									<p:commandButton class="btn-danger" value="Limpar" type="reset" />
+									<p:commandButton value="Limpar" type="reset" />
 								</f:facet>
 
 							</p:panelGrid>
 						</h:form>
 
-						<h:form id="uploadForm" enctype="multipart/form-data">
-							<p:dialog id="dialogUpload" header="Uploading..."
-								widgetVar="upload" modal="true" dynamic="false">>
-								<h:outputLabel for="logo" value="Logo: " />
-								<p:growl id="messages" showDetail="true" />
-								<p:fileUpload fileUploadListener="#{EmpresaBean.subirLogo}"
-									mode="simple" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
-							</p:dialog>
-						</h:form>
 					</div>
 
 				</div>
@@ -227,7 +181,7 @@
 	<!-- /#wrapper -->
 
 	<!-- jQuery -->
-	<script src="../../js/jquery.js"></script>
+	<!-- <script src="../../js/jquery.js"></script> -->
 
 	<!-- Bootstrap Core JavaScript -->
 	<script src="../../js/bootstrap.min.js"></script>

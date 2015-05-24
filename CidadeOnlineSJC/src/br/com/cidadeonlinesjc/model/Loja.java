@@ -1,5 +1,9 @@
 package br.com.cidadeonlinesjc.model;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
@@ -7,13 +11,29 @@ import br.com.cidadeonlinesjc.dao.LojaDAO;
 
 @ManagedBean(name = "LojaBean")
 @ViewScoped
-public class Loja {
+public class Loja implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int id;
 	private String endereco;
 	private String complemento;
 	private String bairro;
-	private int idEmpresa;
 	private Loja loja;
+	private List<Loja> lojas;
+
+	/*
+	 * public Loja() { lojas = new LojaDAO().getListaLoja(); loja = new Loja();
+	 * }
+	 */
+
+	public List<Loja> getListaLojas() {
+		lojas = new ArrayList<Loja>();
+		LojaDAO dao = new LojaDAO();
+		lojas = dao.getListaLoja();
+		return lojas;
+	}
 
 	public Loja getLoja() {
 		return loja;
@@ -52,15 +72,7 @@ public class Loja {
 	}
 
 	public void setEndereco(String endereco) {
-		this.endereco = endereco + getComplemento() + getBairro();
-	}
-
-	public int getIdEmpresa() {
-		return idEmpresa;
-	}
-
-	public void setIdEmpresa(int idEmpresa) {
-		this.idEmpresa = idEmpresa;
+		this.endereco = endereco + this.getComplemento() + this.getBairro();
 	}
 
 	public void adicionaLoja() {
@@ -70,12 +82,12 @@ public class Loja {
 
 	public void alteraLoja() {
 		LojaDAO dao = new LojaDAO();
-		dao.alteraLoja(this);
+		dao.alteraLoja(this.loja);
 	}
 
 	public void excluiLoja() {
 		LojaDAO dao = new LojaDAO();
-		dao.excluiLoja(this);
+		dao.excluiLoja(this.loja);
 	}
 
 }

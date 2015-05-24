@@ -1,5 +1,7 @@
 package br.com.cidadeonlinesjc.model;
 
+import java.io.Serializable;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
@@ -7,7 +9,12 @@ import br.com.cidadeonlinesjc.dao.CategoriaDAO;
 
 @ManagedBean(name = "CategoriaBean")
 @ViewScoped
-public class Categoria {
+public class Categoria implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6008874172051701691L;
 	private int id;
 	private String descricao;
 	private int idSelecionado;

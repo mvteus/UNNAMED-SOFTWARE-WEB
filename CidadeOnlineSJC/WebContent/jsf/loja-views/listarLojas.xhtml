@@ -37,9 +37,6 @@
 					<p:column sortBy="#{loja.endereco}" headerText="Endereço">
 						<h:outputText value="#{loja.endereco}" />
 					</p:column>
-					<p:column sortBy="#{loja.Empresa_idEmpresa}" headerText="Empresa">
-						<h:outputText value="#{loja.Empresa_idEmpresa}" />
-					</p:column>
 
 					<!-- AÇÕES ALTERAR/EXCLUIR -->
 					<p:column headerText="Alterar">
@@ -47,8 +44,8 @@
 						<p:commandButton icon="ui-icon-pencil" title="Alterar"
 							update=":alteraLojaForm:dialogEditar"
 							oncomplete="PF('editar').show();" immediate="true">
-							<f:setPropertyActionListener value="#{categoria}"
-								target="#{CategoriaBean.categoria}"></f:setPropertyActionListener>
+							<f:setPropertyActionListener value="#{loja}"
+								target="#{LojaBean.loja}"></f:setPropertyActionListener>
 						</p:commandButton>
 					</p:column>
 
@@ -81,14 +78,6 @@
 						<!-- BAIRRO -->
 						<h:outputLabel for="bairro" value="Bairro: " />
 						<h:inputText id="bairro" value="#{LojaBean.bairro}" />
-
-						<!-- SELECIONAR EMPRESA -->
-						<p:outputLabel for="empresa" value="Empresas: " />
-						<p:selectOneMenu id="empresa" value="#{EmpresaDAOBean.lista}">
-							<f:selectItems value="#{EmpresaDAOBean.lista}" var="empresa"
-								itemLabel="#{empresa.nome}" itemValue="#{empresa.id}" />
-						</p:selectOneMenu>
-
 
 						<p:commandButton value="Confirmar"
 							action="#{LojaBean.adicionaLoja}" />

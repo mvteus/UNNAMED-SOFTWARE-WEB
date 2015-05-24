@@ -14,10 +14,10 @@ import br.com.cidadeonlinesjc.model.Empresa;
 
 @ManagedBean(name = "EmpresaDAOBean")
 public class EmpresaDAO {
-	private final String INSERT_EMPRESAS = "INSERT INTO empresa (cnpj, nome, email, logo) values (?, ?, ?, ?)";
+	private final String INSERT_EMPRESAS = "INSERT INTO empresa (CNPJ, Nome, Email, idUsuario, idLoja) values (?, ?, ?, ?, ?)";
 	private final String SELECT_EMPRESAS = "SELECT * FROM empresa";
 	private final String DELETE_EMPRESAS = "DELETE FROM empresa WHERE cnpj = (?)";
-	private final String UPDATE_EMPRESAS = "UPDATE empresa SET cnpj=?, nome=?, email=?, logo=? WHERE id=? ";
+	private final String UPDATE_EMPRESAS = "UPDATE empresa SET CNPJ=?, Nome=?, Email=?, idUsuario=?, idLoja=? WHERE idEmpresa=? ";
 	private Connection con;
 
 	public EmpresaDAO() {
@@ -32,8 +32,9 @@ public class EmpresaDAO {
 			stmt.setString(1, empresa.getCnpj());
 			stmt.setString(2, empresa.getNome());
 			stmt.setString(3, empresa.getEmail());
-			stmt.setString(4, empresa.getLogo());
-			stmt.setLong(5, empresa.getId());
+			stmt.setInt(4, empresa.getIdUsuario());
+			stmt.setInt(5, empresa.getIdLoja());
+			stmt.setLong(6, empresa.getId());
 
 			stmt.execute();
 			stmt.close();
@@ -65,7 +66,8 @@ public class EmpresaDAO {
 			stmt.setString(1, empresa.getCnpj());
 			stmt.setString(2, empresa.getNome());
 			stmt.setString(3, empresa.getEmail());
-			stmt.setString(4, empresa.getLogo());
+			stmt.setInt(4, empresa.getIdUsuario());
+			stmt.setInt(5, empresa.getIdLoja());
 
 			stmt.execute();
 			stmt.close();
@@ -85,11 +87,12 @@ public class EmpresaDAO {
 			while (rs.next()) {
 				// Criando objeto Empresa.
 				Empresa empresa = new Empresa();
-				empresa.setId(rs.getLong("id"));
-				empresa.setCnpj(rs.getString("cnpj"));
-				empresa.setNome(rs.getString("nome"));
-				empresa.setEmail(rs.getString("email"));
-				empresa.setLogo(rs.getString("logo"));
+				empresa.setId(rs.getLong("idEmpresa"));
+				empresa.setCnpj(rs.getString("CNPJ"));
+				empresa.setNome(rs.getString("Nome"));
+				empresa.setEmail(rs.getString("Email"));
+				empresa.setIdUsuario(rs.getInt("idUsuario"));
+				empresa.setIdLoja(rs.getInt("idLoja"));
 
 				// Adicionando objeto na lista.
 				empresas.add(empresa);

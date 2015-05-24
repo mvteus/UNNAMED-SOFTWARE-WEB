@@ -5,7 +5,6 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
-	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta name="description" content="" />
@@ -143,9 +142,9 @@
 							value="#{UsuarioBean.permissao}" />
 
 						<f:facet name="footer">
-							<p:commandButton class="btn-success" value="Confirmar"
-								icon="ui-icon-check" action="#{UsuarioBean.adicionaUsuario}" />
-							<p:commandButton class="btn-danger" value="Limpar" type="reset" />
+							<p:commandButton value="Confirmar" icon="ui-icon-check"
+								action="#{UsuarioBean.adicionaUsuario}" />
+							<p:commandButton value="Limpar" type="reset" immediate="true" />
 						</f:facet>
 					</p:panelGrid>
 				</h:form>
