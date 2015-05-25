@@ -85,7 +85,7 @@ public class EmpresaDAO {
 			while (rs.next()) {
 				// Criando objeto Empresa.
 				Empresa empresa = new Empresa();
-				empresa.setId(rs.getLong("id"));
+				empresa.setId(rs.getLong("idEmpresa"));
 				empresa.setCnpj(rs.getString("cnpj"));
 				empresa.setNome(rs.getString("nome"));
 				empresa.setEmail(rs.getString("email"));
