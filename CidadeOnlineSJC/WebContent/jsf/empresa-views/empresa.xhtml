@@ -3,8 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
-<h:head>
+	xmlns:p="http://primefaces.org/ui"> <h:head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta name="description" content="" />
@@ -21,161 +20,105 @@
 	<!-- Custom Fonts -->
 	<link href="../../font-awesome/css/font-awesome.min.css"
 		rel="stylesheet" type="text/css" />
-</h:head>
-<h:body>
-	<div id="wrapper">
+</h:head> <h:body>
+	<div id="wrapper"> <nav
+		class="navbar navbar-default  navbar-fixed-top" role="navigation">
+	<div class="container-fluid"> <div class="navbar-header"> <button
+		type="button" class="navbar-toggle" data-toggle="collapse"
+		data-target=".navbar-ex1-collapse"> <span class="sr-only">Toggle
+	navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+	<span class="icon-bar"></span> </button> <a class="navbar-brand"
+		href="index.html">Administrativo</a> </div> <!-- Top Menu Items --> <ul
+		class="nav navbar-right top-nav"> <li class="dropdown"> <a
+		href="#" class="dropdown-toggle" data-toggle="dropdown"> <i
+		class="fa fa-user"></i> Mateus <b class="caret"></b></a> <ul
+		class="dropdown-menu"> <li> <a href="#"> <i
+		class="fa fa-fw fa-user"></i> Profile</a> </li> <li> <a href="#"> <i
+		class="fa fa-fw fa-gear"></i> Settings</a> </li> <li class="divider"></li> <li>
+	<a href="#"> <i class="fa fa-fw fa-power-off"></i> Log Out</a></li> </ul></li> </ul> <div
+		class="collapse navbar-collapse navbar-ex1-collapse"> <ul
+		class="nav navbar-nav side-nav"> <!-- EMPRESA --> <li> <a
+		href="javascript:;" data-toggle="collapse" data-target="#empresa">
+	<i class="fa fa-fw fa-edit"></i> Empresa <i
+		class="fa fa-fw fa-caret-down"></i></a> <ul id="empresa" class="collapse">
+	<li> <a href="empresa.xhtml"> <i class="fa fa-fw fa-edit"></i>
+	Nova Empresa </a></li> <li> <a href="listarEmpresas.xhtml"> <i
+		class="fa fa-fw fa-edit"></i> Alterar Empresa </a></li> </ul></li> <!-- CATEGORIA --> <li>
+	<a href="javascript:;" data-toggle="collapse" data-target="#categoria">
+	<i class="fa fa-fw fa-edit"></i> Categoria <i
+		class="fa fa-fw fa-caret-down"></i></a> <ul id="categoria"
+		class="collapse"> <li> <a
+		href="../categoria-views/categoria.xhtml"> <i
+		class="fa fa-fw fa-edit"></i> Nova Categoria </a></li> <li> <a
+		href="../categoria-views/listarCategorias.xhtml"> <i
+		class="fa fa-fw fa-edit"></i> Alterar Categoria </a></li> </ul></li> <!-- LOJA --> <li>
+	<a href="javascript:;" data-toggle="collapse" data-target="#loja">
+	<i class="fa fa-fw fa-edit"></i> Loja <i class="fa fa-fw fa-caret-down"></i></a>
+	<ul id="loja" class="collapse"> <li> <a
+		href="../loja-views/loja.xhtml"> <i class="fa fa-fw fa-edit"></i>
+	Nova Loja </a></li> <li> <a href="../loja-views/listarLojas.xhtml"> <i
+		class="fa fa-fw fa-edit"></i> Alterar Loja </a></li> </ul></li> <!-- USUÁRIO --> <li>
+	<a href="javascript:;" data-toggle="collapse" data-target="#usuario">
+	<i class="fa fa-fw fa-edit"></i> Usuário <i
+		class="fa fa-fw fa-caret-down"></i></a> <ul id="usuario" class="collapse">
+	<li> <a href="../usuario-views/usuario.xhtml"> <i
+		class="fa fa-fw fa-edit"></i> Novo Usuário </a></li> <li> <a
+		href="../usuario-views/listarUsuarios.xhtml"> <i
+		class="fa fa-fw fa-edit"></i> Alterar Usuário </a></li> </ul></li> </ul> </div> </div> <!-- /.navbar-collapse -->
+	</nav> <div id="page-wrapper"> <div class="container-fluid"> <div
+		class="row"> <div class="col-lg-12"> <h:form
+		id="empresaForm">
 
-		<nav class="navbar navbar-default  navbar-fixed-top" role="navigation">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse"
-					data-target=".navbar-ex1-collapse">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="index.html">Administrativo</a>
-			</div>
-			<!-- Top Menu Items -->
-			<ul class="nav navbar-right top-nav">
+		<p:panelGrid columns="1" layout="grid">
 
-				<li class="dropdown"><a href="#" class="dropdown-toggle"
-					data-toggle="dropdown"><i class="fa fa-user"></i> Mateus <b
-						class="caret"></b></a>
-					<ul class="dropdown-menu">
-						<li><a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
-						</li>
-						<li><a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
-						</li>
-						<li class="divider"></li>
-						<li><a href="#"><i class="fa fa-fw fa-power-off"></i> Log
-								Out</a></li>
-					</ul></li>
-			</ul>
-			<div class="collapse navbar-collapse navbar-ex1-collapse">
-				<ul class="nav navbar-nav side-nav">
+			<f:facet name="header">Empresa</f:facet>
 
-					<!-- EMPRESA -->
-					<li><a href="javascript:;" data-toggle="collapse"
-						data-target="#empresa"><i class="fa fa-fw fa-edit"></i>
-							Empresa <i class="fa fa-fw fa-caret-down"></i></a>
-						<ul id="empresa" class="collapse">
-							<li><a href="empresa.xhtml"><i class="fa fa-fw fa-edit"></i>
-									Nova Empresa </a></li>
-							<li><a href="listarEmpresas.xhtml"><i
-									class="fa fa-fw fa-edit"></i> Alterar Empresa </a></li>
-						</ul></li>
+			<!-- NOME DA EMPRESA -->
+			<h:outputLabel for="nome" value="Nome da Empresa: " />
+			<p:inputText id="nome" value="#{EmpresaBean.nome}" />
 
-					<!-- CATEGORIA -->
-					<li><a href="javascript:;" data-toggle="collapse"
-						data-target="#categoria"><i class="fa fa-fw fa-edit"></i>
-							Categoria <i class="fa fa-fw fa-caret-down"></i></a>
-						<ul id="categoria" class="collapse">
-							<li><a href="../categoria-views/categoria.xhtml"><i
-									class="fa fa-fw fa-edit"></i> Nova Categoria </a></li>
-							<li><a href="../categoria-views/listarCategorias.xhtml"><i
-									class="fa fa-fw fa-edit"></i> Alterar Categoria </a></li>
-						</ul></li>
+			<!-- CNPJ -->
+			<h:outputLabel for="cnpj" value="CNPJ: " />
+			<p:inputText id="cnpj" value="#{EmpresaBean.cnpj}" />
 
-					<!-- LOJA -->
-					<li><a href="javascript:;" data-toggle="collapse"
-						data-target="#loja"><i class="fa fa-fw fa-edit"></i> Loja <i
-							class="fa fa-fw fa-caret-down"></i></a>
-						<ul id="loja" class="collapse">
-							<li><a href="../loja-views/loja.xhtml"><i
-									class="fa fa-fw fa-edit"></i> Nova Loja </a></li>
-							<li><a href="../loja-views/listarLojas.xhtml"><i
-									class="fa fa-fw fa-edit"></i> Alterar Loja </a></li>
-						</ul></li>
+			<!-- E-MAIL -->
+			<h:outputLabel for="email" value="Email: " />
+			<p:inputText id="email" value="#{EmpresaBean.email}"
+				validatorMessage="Email mal formatado">
 
-					<!-- USUÁRIO -->
-					<li><a href="javascript:;" data-toggle="collapse"
-						data-target="#usuario"><i class="fa fa-fw fa-edit"></i>
-							Usuário <i class="fa fa-fw fa-caret-down"></i></a>
-						<ul id="usuario" class="collapse">
-							<li><a href="../usuario-views/usuario.xhtml"><i
-									class="fa fa-fw fa-edit"></i> Novo Usuário </a></li>
-							<li><a href="../usuario-views/listarUsuarios.xhtml"><i
-									class="fa fa-fw fa-edit"></i> Alterar Usuário </a></li>
-						</ul></li>
+				<f:validateRegex
+					pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
 
-				</ul>
-			</div>
-		</div>
-		<!-- /.navbar-collapse --> </nav>
+			</p:inputText>
 
-		<div id="page-wrapper">
+			<!-- SUBIR LOGO -->
 
-			<div class="container-fluid">
+			<!-- SELECIONAR LOJA -->
 
-				<div class="row">
-					<div class="col-lg-12">
+			<h:outputLabel for="loja" value="Lojas: " />
+			<p:selectOneMenu id="loja" value="#{LojaBean.listaLojas}">
+				<f:selectItems value="#{LojaBean.listaLojas}" var="loja"
+					itemLabel="#{loja.endereco}" itemValue="#{loja.endereco}" />
+			</p:selectOneMenu>
 
-						<h:form id="empresaForm">
-							<p:panelGrid columns="2" cellpadding="2">
+			<!-- SELECIONAR USUÁRIO -->
 
-								<f:facet name="header">Usuários</f:facet>
+			<h:outputLabel for="usuario" value="Usuários: " />
+			<p:selectOneMenu id="usuario" value="#{UsuarioBean.listaUsuarios}">
+				<f:selectItems value="#{UsuarioBean.listaUsuarios}" var="usuario"
+					itemLabel="#{usuario.nome}" itemValue="#{usuario}">
+				</f:selectItems>
+			</p:selectOneMenu>
 
-								<!-- NOME DA EMPRESA -->
-								<h:outputLabel for="nome" value="Nome da Empresa: " />
-								<p:inputText id="nome" value="#{EmpresaBean.nome}" />
+			<f:facet name="footer">
+				<p:commandButton value="Confirmar" icon="ui-icon-check"
+					action="#{EmpresaBean.adicionaEmpresa}" />
+				<p:commandButton value="Limpar" type="reset" />
+			</f:facet>
 
-								<!-- CNPJ -->
-								<h:outputLabel for="cnpj" value="CNPJ: " />
-								<p:inputText id="cnpj" value="#{EmpresaBean.cnpj}" />
+		</p:panelGrid>
 
-								<!-- E-MAIL -->
-								<h:outputLabel for="email" value="Email: " />
-								<p:inputText id="email" value="#{EmpresaBean.email}"
-									validatorMessage="Email mal formatado">
-
-									<f:validateRegex
-										pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
-
-								</p:inputText>
-
-								<!-- SUBIR LOGO -->
-
-								<!-- SELECIONAR LOJA -->
-
-								<p:outputLabel for="loja" value="Lojas: " />
-								<p:selectOneMenu id="loja" value="#{LojaBean.listaLojas}">
-									<f:selectItems value="#{LojaBean.listaLojas}" var="loja"
-										itemLabel="#{loja.endereco}" itemValue="#{loja.endereco}" />
-								</p:selectOneMenu>
-
-
-
-								<!-- SELECIONAR USUÁRIO -->
-
-								<p:outputLabel for="usuario" value="Usuários: " />
-								<p:selectOneMenu id="usuario"
-									value="#{UsuarioBean.listaUsuarios}">
-									<f:selectItems value="#{UsuarioBean.listaUsuarios}"
-										var="usuario" itemLabel="#{usuario.nome}"
-										itemValue="#{usuario}">
-									</f:selectItems>
-								</p:selectOneMenu>
-
-								<f:facet name="footer">
-									<p:commandButton value="Confirmar"
-										action="#{EmpresaBean.adicionaEmpresa}" />
-									<p:commandButton value="Limpar" type="reset" />
-								</f:facet>
-
-							</p:panelGrid>
-						</h:form>
-
-					</div>
-
-				</div>
-				<!-- /.row -->
-
-			</div>
-			<!-- /.container-fluid -->
-
-		</div>
-		<!-- /#page-wrapper -->
+	</h:form> </div> </div> <!-- /.row --> </div> <!-- /.container-fluid --> </div> <!-- /#page-wrapper -->
 
 	</div>
 	<!-- /#wrapper -->
@@ -185,5 +128,4 @@
 
 	<!-- Bootstrap Core JavaScript -->
 	<script src="../../js/bootstrap.min.js"></script>
-</h:body>
-</html>
+</h:body> </html>

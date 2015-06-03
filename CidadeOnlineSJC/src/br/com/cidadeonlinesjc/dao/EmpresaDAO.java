@@ -69,6 +69,8 @@ public class EmpresaDAO {
 			stmt.setInt(4, empresa.getIdUsuario());
 			stmt.setInt(5, empresa.getIdLoja());
 
+			System.out.println(empresa.getNome()
+					+ " foi adicionado com sucesso.");
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {

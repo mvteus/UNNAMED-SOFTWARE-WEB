@@ -5,13 +5,13 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.SessionScoped;
 import javax.servlet.http.Part;
 
 import br.com.cidadeonlinesjc.dao.EmpresaDAO;
 
 @ManagedBean(name = "EmpresaBean")
-@ViewScoped
+@SessionScoped
 public class Empresa implements Serializable {
 	/**
 	 * 

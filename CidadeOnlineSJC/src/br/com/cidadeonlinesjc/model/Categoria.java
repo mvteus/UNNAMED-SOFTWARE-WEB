@@ -3,12 +3,12 @@ package br.com.cidadeonlinesjc.model;
 import java.io.Serializable;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.SessionScoped;
 
 import br.com.cidadeonlinesjc.dao.CategoriaDAO;
 
 @ManagedBean(name = "CategoriaBean")
-@ViewScoped
+@SessionScoped
 public class Categoria implements Serializable {
 
 	/**

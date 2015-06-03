@@ -119,9 +119,9 @@
 
 			<div class="container-fluid">
 				<h1 class="page-header text-center">Bem Vindo!</h1>
-				<div class="jumbotron">
-					<img src="img/cidade-online-logo.png"
-						class="img-reponsive img-thumbnail img-rounded">
+				<div class="jumbotron text-center">
+					<img src="img/cidadeOnline-logo-texto_03.png" style="width:300px; height:300px;"
+						class="img-rounded">
 				</div>
 			</div>
 			<!-- /.container-fluid -->
