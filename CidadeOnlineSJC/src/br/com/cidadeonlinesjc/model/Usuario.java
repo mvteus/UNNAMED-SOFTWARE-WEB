@@ -1,17 +1,33 @@
 package br.com.cidadeonlinesjc.model;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.SessionScoped;
 
 import br.com.cidadeonlinesjc.dao.UsuarioDAO;
 
 @ManagedBean(name = "UsuarioBean")
-@ViewScoped
-public class Usuario {
+@SessionScoped
+public class Usuario implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int id;
 	private String senha;
 	private String nome;
 	private boolean permissao;
+	private List<Usuario> usuarios;
+
+	public List<Usuario> getListaUsuarios() {
+		usuarios = new ArrayList<Usuario>();
+		UsuarioDAO dao = new UsuarioDAO();
+		usuarios = dao.getListaUsuario();
+		return usuarios;
+	}
 
 	public int getId() {
 		return id;
@@ -44,18 +60,18 @@ public class Usuario {
 	public void setPermissao(boolean permissao) {
 		this.permissao = permissao;
 	}
-	
-	public void adicionaUsuario(){
+
+	public void adicionaUsuario() {
 		UsuarioDAO dao = new UsuarioDAO();
 		dao.adicionaUsuario(this);
 	}
-	
-	public void alteraUsuario(){
+
+	public void alteraUsuario() {
 		UsuarioDAO dao = new UsuarioDAO();
 		dao.alteraUsuario(this);
 	}
-	
-	public void excluiUsuario(){
+
+	public void excluiUsuario() {
 		UsuarioDAO dao = new UsuarioDAO();
 		dao.excluiUsuario(this);
 	}

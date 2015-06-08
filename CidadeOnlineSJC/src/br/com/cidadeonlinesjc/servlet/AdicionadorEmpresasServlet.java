@@ -26,13 +26,13 @@ public class AdicionadorEmpresasServlet extends HttpServlet {
 		String cnpj = request.getParameter("cnpj");
 		String nome = request.getParameter("nome");
 		String email = request.getParameter("email");
-		String logo = request.getParameter("logo");
+		/* String logo = request.getParameter("logo"); */
 
 		Empresa empresa = new Empresa();
 		empresa.setCnpj(cnpj);
 		empresa.setNome(nome);
 		empresa.setEmail(email);
-		empresa.setLogo(logo);
+		/* empresa.setLogo(logo); */
 
 		EmpresaDAO dao = new EmpresaDAO();
 		dao.adicionaEmpresa(empresa);

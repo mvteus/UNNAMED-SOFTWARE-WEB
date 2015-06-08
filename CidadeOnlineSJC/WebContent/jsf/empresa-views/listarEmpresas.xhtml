@@ -29,7 +29,7 @@
 		<div class="jumbotron">
 			<h:form id="empresaForm">
 				<p:dataTable id="empresaGrid" var="empresa"
-					value="#{EmpresaDAO.lista}" paginator="true" rows="5">
+					value="#{EmpresaDAOBean.lista}" paginator="true" rows="5">
 					<p:column sortBy="#{empresa.id}" headerText="ID">
 						<h:outputText value="#{empresa.id}" />
 					</p:column>
@@ -42,23 +42,15 @@
 					<p:column sortBy="#{empresa.email}" headerText="E-mail">
 						<h:outputText value="#{empresa.email}" />
 					</p:column>
-					<p:column sortBy="#{empresa.logo}" headerText="Logo">
-						<h:graphicImage value="#{empresa.logo}" />
+					<p:column sortBy="#{empresa.idUsuario}" headerText="Usuário">
+						<h:outputText value="#{empresa.idUsuario}" />
 					</p:column>
-					<p:column sortBy="#{empresa.Usuario_idUsuario}"
-						headerText="Usuário">
-						<h:outputText value="#{empresa.Usuario_idUsuario}" />
-					</p:column>
-					<p:column headerText="Ações">
-						<p:commandButton class="btn-success" value="Alterar"
-							action="#{EmpresaBean.alteraEmpresa}" />
-						<p:commandButton class="btn-danger" value="Excluir"
-							action="#{EmpresaBean.excluiEmpresa}" />
+					<p:column sortBy="#{empresa.idLoja}" headerText="Loja">
+						<h:outputText value="#{empresa.idLoja}" />
 					</p:column>
 
 					<!-- AÇÕES ALTERAR/EXCLUIR -->
 					<p:column headerText="Alterar">
-
 						<p:commandButton icon="ui-icon-pencil" title="Alterar"
 							update=":alteraEmpresaForm:dialogEditar"
 							oncomplete="PF('editar').show();" immediate="true">
@@ -69,7 +61,7 @@
 
 					<p:column headerText="Excluir">
 						<p:commandButton icon="ui-icon-circle-close" title="Excluir"
-							action="#{CategoriaBean.excluiCategoria}" ajax="false"
+							action="#{EmpresaBean.excluiEmpresa}" ajax="false"
 							update=":empresaForm">
 							<f:setPropertyActionListener value="#{empresa}"
 								target="#{EmpresaBean.empresa}"></f:setPropertyActionListener>
@@ -77,10 +69,11 @@
 					</p:column>
 				</p:dataTable>
 				<!-- FIM AÇÕES ALTERAR/EXCLUIR -->
+
 			</h:form>
 
 			<!-- EDITAR EMPRESA DIALOG -->
-			<h:form id="alteraEmpresaForm" enctype="multipart/form-data">
+			<h:form id="alteraEmpresaForm">
 
 				<p:dialog id="dialogEditar" header="Editando" widgetVar="editar"
 					modal="true" dynamic="false">
@@ -113,23 +106,17 @@
 
 						<!-- SUBIR LOGO -->
 
-						<h:outputLabel for="logo" value="Logo: " />
-						<p:growl id="messages" showDetail="true" />
-						<p:fileUpload fileUploadListener="#{EmpresaBean.subirLogo}"
-							mode="simple" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
-
 						<!-- SELECIONAR LOJA -->
-						<!-- <h:panelGrid columns="2">
-								<p:outputLabel for="loja" value="Lojas: " />
-								<p:selectOneListbox id="loja" value="#{LojaDAOBean.listaLoja}">
-									<f:selectItems value="#{LojaDAOBean.listaLoja}" var="loja"
-										itemLabel="#{loja.endereco}" itemValue="#{loja.endereco}" />
-								</p:selectOneListbox>
-							</h:panelGrid> -->
+						<h:panelGrid columns="2">
+							<p:outputLabel for="loja" value="Lojas: " />
+							<p:selectOneListbox id="loja" value="#{LojaDAOBean.listaLoja}">
+								<f:selectItems value="#{LojaDAOBean.listaLoja}" var="loja"
+									itemLabel="#{loja.endereco}" itemValue="#{loja.endereco}" />
+							</p:selectOneListbox>
+						</h:panelGrid>
 
 
 						<!-- SELECIONAR USUÁRIO -->
-
 						<p:outputLabel for="usuario" value="Usuários: " />
 						<p:selectOneListbox id="usuario"
 							value="#{UsuarioDAOBean.listaUsuario}">
@@ -141,11 +128,9 @@
 
 
 						<f:facet name="footer">
-							<p:commandButton class="btn-success" value="Subir" ajax="false"
-								actionListener="#{EmpresaBean.subirLogo}" disabled="false" />
-							<p:commandButton class="btn-success" value="Confirmar"
-								action="#{EmpresaBean.adicionaEmpresa}" />
-							<p:commandButton class="btn-danger" value="Limpar" type="reset" />
+							<p:commandButton value="Confirmar"
+								action="#{EmpresaBean.alteraEmpresa}" />
+							<p:commandButton value="Limpar" type="reset" />
 						</f:facet>
 
 					</p:panelGrid>
@@ -154,6 +139,7 @@
 
 			</h:form>
 			<!-- FIM EDITAR EMPRESA DIALOG -->
+
 		</div>
 	</div>
 	<footer>

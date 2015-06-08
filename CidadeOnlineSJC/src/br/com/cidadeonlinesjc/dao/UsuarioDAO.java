@@ -8,11 +8,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 
 import br.com.cidadeonlinesjc.jdbc.ConnectionFactory;
 import br.com.cidadeonlinesjc.model.Usuario;
 
 @ManagedBean(name = "UsuarioDAOBean")
+@ViewScoped
 public class UsuarioDAO {
 	private Connection con;
 	private final String INSERT_USUARIO = "INSERT INTO usuario (senha, nome, permissao) values (?, ?, ?)";

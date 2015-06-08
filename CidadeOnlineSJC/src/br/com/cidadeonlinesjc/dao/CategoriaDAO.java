@@ -1,5 +1,6 @@
 package br.com.cidadeonlinesjc.dao;
 
+import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,12 +14,16 @@ import br.com.cidadeonlinesjc.jdbc.ConnectionFactory;
 import br.com.cidadeonlinesjc.model.Categoria;
 
 @ManagedBean(name = "CategoriaDAOBean")
-public class CategoriaDAO {
+public class CategoriaDAO implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3590498636577365502L;
 	private Connection con;
-	private final String INSERT_CATEGORIA = "INSERT INTO categoria (descricao) values (?)";
+	private final String INSERT_CATEGORIA = "INSERT INTO categoria (Descricao) values (?)";
 	private final String SELECT_CATEGORIA = "SELECT * FROM categoria";
 	private final String DELETE_CATEGORIA = "DELETE FROM categoria WHERE idCategoria = (?)";
-	private final String UPDATE_CATEGORIA = "UPDATE categoria SET descricao=? WHERE idCategoria=? ";
+	private final String UPDATE_CATEGORIA = "UPDATE categoria SET Descricao=? WHERE idCategoria=?";
 
 	public CategoriaDAO() {
 		this.con = new ConnectionFactory().getConnection();
@@ -50,7 +55,7 @@ public class CategoriaDAO {
 				// Criando objeto Categoria.
 				Categoria categoria = new Categoria();
 				categoria.setId(rs.getInt("idCategoria"));
-				categoria.setDescricao(rs.getString("descricao"));
+				categoria.setDescricao(rs.getString("Descricao"));
 
 				// Adicionando objeto categoria na lista.
 				categorias.add(categoria);

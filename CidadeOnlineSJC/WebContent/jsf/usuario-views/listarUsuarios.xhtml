@@ -50,12 +50,12 @@
 				<!-- AÇÕES ALTERAR/EXCLUIR -->
 				<p:column headerText="Ações">
 					<h:form>
-						<p:commandButton class="btn-success" value="Alterar"
+						<p:commandButton value="Alterar"
 							action="#{UsuarioBean.alteraUsuario}">
 							<f:setPropertyActionListener value="empresa.cnpj"
 								target="empresa.selectedCnpj"></f:setPropertyActionListener>
 						</p:commandButton>
-						<p:commandButton class="btn-danger" value="Excluir"
+						<p:commandButton value="Excluir"
 							action="#{UsuarioBean.excluiUsuario}" />
 					</h:form>
 				</p:column>
