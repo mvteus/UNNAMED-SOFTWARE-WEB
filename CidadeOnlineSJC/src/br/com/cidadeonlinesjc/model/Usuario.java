@@ -5,12 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 
 import br.com.cidadeonlinesjc.dao.UsuarioDAO;
 
 @ManagedBean(name = "UsuarioBean")
-@SessionScoped
+@ViewScoped
 public class Usuario implements Serializable {
 	/**
 	 * 
