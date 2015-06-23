@@ -7,7 +7,7 @@ import javax.faces.bean.SessionScoped;
 
 import br.com.cidadeonlinesjc.dao.CategoriaDAO;
 
-@ManagedBean(name = "CategoriaBean")
+@ManagedBean
 @SessionScoped
 public class Categoria implements Serializable {
 

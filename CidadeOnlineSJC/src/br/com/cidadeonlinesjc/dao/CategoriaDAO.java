@@ -9,11 +9,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 
 import br.com.cidadeonlinesjc.jdbc.ConnectionFactory;
 import br.com.cidadeonlinesjc.model.Categoria;
 
 @ManagedBean(name = "CategoriaDAOBean")
+@ViewScoped
 public class CategoriaDAO implements Serializable {
 	/**
 	 * 
