@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<link href="#{request.contextPath}/resources/css/standard.css" rel="stylesheet" type="text/css"/>
+	<style type="text/css">
+.leftAlignment {
+	float: right !important;
+	width: 450px !important;
+}
+</style>
+</h:head>
+<h:body styleClass="backgroundImagem">
+	<p:growl id="growl" life="3000" autoUpdate="true" />
+	<div class="leftAlignment">
+		<h:form id="loginForm" styleClass="animated tada">
+			<p:panelGrid id="panelGridLogin"
+				styleClass="panelgridBackgroundTransparente panelgridSemBordas fonte14">
+				<p:row>
+					<p:column>
+						<span class="fonteCor3">Email</span>
+					</p:column>
+					<p:column>
+						<span class="fonteCor3">Senha:</span>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column>
+						<p:inputText id="login" size="20" maxlength="120" required="true"
+							requiredMessage="Email é obrigatório"
+							value="#{MbUserAuthentication.email}">
+						</p:inputText>
+					</p:column>
+					<p:column>
+						<p:password id="senha" size="20" maxlength="11" required="true"
+							requiredMessage="Senha é obrigatória"
+							value="#{MbUserAuthentication.password}" />
+						<p:spacer height="10px"></p:spacer>
+						<p:commandLink update="panelGridLogin"
+							style="text-decoration: none"
+							actionListener="#{MbUserAuthentication.authenticate}" ajax="true">
+							<span class="fonteCor3">OK</span>
+						</p:commandLink>
+					</p:column>
+				</p:row>
+			</p:panelGrid>
+		</h:form>
+	</div>
+</h:body>
+</html>

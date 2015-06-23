@@ -8,14 +8,11 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="C:/apache-tomcat-8.0.18/lib/servlet-api.jar"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JSF 2.2 (Mojarra 2.2.0)">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-			<attribute name="owner.project.facets" value="jst.jsf"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/User/Documents/tecnologia-informacao/java-frameworks/mysql-connector-java-5.1.34/mysql-connector-java-5.1.34/mysql-connector-java-5.1.34-bin.jar"/>
-	<classpathentry kind="lib" path="C:/Users/User/Documents/tecnologia-informacao/java-frameworks/primefaces-5.1.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/apache-tomcat-8.0.21/lib/servlet-api.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Daniel/git/CidadeOnlineSJC/CidadeOnlineSJC/WebContent/WEB-INF/lib/commons-fileupload-1.3.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Daniel/git/CidadeOnlineSJC/CidadeOnlineSJC/WebContent/WEB-INF/lib/commons-io-2.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Daniel/git/CidadeOnlineSJC/CidadeOnlineSJC/WebContent/WEB-INF/lib/mysql-connector-java-5.1.34-bin.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Daniel/Downloads/jsf-api-2.2.9.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Daniel/Downloads/primefaces-5.2.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

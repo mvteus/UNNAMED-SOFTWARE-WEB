@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+<link href="#{request.contextPath}/css/standard.css" rel="stylesheet" type="text/css"/>
+	
+	
+</h:head> 
+<h:body> 
+	<p:layout style="min-width:1020px;max-width:1400px;min-height:600px">
+		<p:layoutUnit  position="north" size="80" style="border: 0" >
+			
+			<h:form>  
+    			<p:growl id="messages" showDetail="true"/>
+ 	    			<p style="text-transform: inherit;">Cidade Online</p>
+   		    </h:form>
+		</p:layoutUnit>
+		
+		<p:layoutUnit position="west" size="150" style="border: 0">
+			
+		</p:layoutUnit>
+		
+		<p:layoutUnit position="center">
+		<p:panel id="basic" footer="Categoria" style="margin-bottom:20px; overflow: hidden;">
+			<p:panelGrid>
+				<h2 style="color:black; font-family: sans-serif;" align="center">Empresa</h2>
+			         <h:outputText
+                value="Descrição da empresa contendo suas informações, desde quando esta no mercado, etc" />
+        </p:panelGrid>
+    	</p:panel>
+    	
+    	
+    	
+    	
+     	</p:layoutUnit>
+		
+		
+		
+		
+	
+	</p:layout>
+
+</h:body> 
+</html>
