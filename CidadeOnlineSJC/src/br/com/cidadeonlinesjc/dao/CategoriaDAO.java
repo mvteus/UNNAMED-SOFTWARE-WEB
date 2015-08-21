@@ -41,6 +41,8 @@ public class CategoriaDAO implements Serializable {
 
 			stmt.execute();
 			stmt.close();
+			
+			
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
@@ -65,7 +67,8 @@ public class CategoriaDAO implements Serializable {
 
 			rs.close();
 			stmt.close();
-
+			
+			
 			return categorias;
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
@@ -81,6 +84,8 @@ public class CategoriaDAO implements Serializable {
 
 			stmt.execute();
 			stmt.close();
+			
+			
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
@@ -96,6 +101,8 @@ public class CategoriaDAO implements Serializable {
 
 			stmt.execute();
 			stmt.close();
+			
+			
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}

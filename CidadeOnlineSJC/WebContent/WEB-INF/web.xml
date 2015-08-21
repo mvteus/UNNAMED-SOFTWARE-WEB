@@ -5,7 +5,7 @@
 	id="WebApp_ID" version="3.0">
 	<display-name>CidadeOnlineSJC</display-name>
 	<welcome-file-list>
-		<welcome-file>empresaPage.xhtml</welcome-file>
+		<!-- <welcome-file>empresaPage.xhtml</welcome-file> -->
 		<welcome-file>index.xhtml</welcome-file>
 		<welcome-file>login.xhtml</welcome-file>
 		<welcome-file>teste.xhtml</welcome-file>
